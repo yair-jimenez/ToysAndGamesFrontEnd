@@ -3,3 +3,8 @@ img{
     margin: auto;
     display: block;
 }
+button{
+    float: right;
+    margin: 10px;
+    box-shadow: 1px 1px 9px rgb(141, 192, 207);
+}
