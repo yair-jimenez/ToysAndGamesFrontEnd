@@ -28,7 +28,7 @@
         {{item.company.name}}
       </td>
       <td>
-        <img [src]="item.urlImage.length > 0 ? getHost() + item.urlImage : '/assets/defaultImage.png' " alt="default image" />
+        <img [src]="item.urlImage ? item.urlImage.length > 0 ? getHost() + item.urlImage : '/assets/defaultImage.png' :'/assets/defaultImage.png' " alt="default image" />
       </td>
       <td>
         <div class="row">

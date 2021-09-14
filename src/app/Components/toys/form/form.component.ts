@@ -28,7 +28,7 @@ export class FormComponent implements OnInit {
   GetImage(){
     const defaultImage = '/assets/defaultImage.png';
    return this.imageTemporalSrc.length > 0 ?  this.imageTemporalSrc : typeof this.transactionalObjectToEdit !== 'undefined' ? 
-      this.transactionalObjectToEdit.urlImage.length > 0 ? 
+      this.transactionalObjectToEdit.urlImage?.length > 0 ? 
        Host + this.transactionalObjectToEdit.urlImage 
       :  defaultImage
         :  defaultImage;
