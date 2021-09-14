@@ -1,0 +1,75 @@
+<button class="btn  btn-outline-primary" (click)="open(content)">Add new</button>
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">{{stateText}}</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="form" (ngSubmit)="save($event)">
+            <div class="form-group">
+                <label for="txt_name">Name</label>
+                <input type="text" class="form-control" id="txt_Name"  placeholder="Enter Name" formControlName="name">
+            </div>
+            <div *ngIf="form.get('name')?.errors && form.get('name')?.touched">
+                <label class="note">
+                    this field is required
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="txt_Age">Maximun Age</label>
+                <input type="number" class="form-control" id="txt_Age"  placeholder="Enter Maximum Age" formControlName="age">
+            </div>
+            <div class="form-group">
+                <label for="txt_Price">Price</label>
+                <input type="number" class="form-control" id="txt_Price"  placeholder="Enter Price" formControlName="price">
+            </div>
+            <div *ngIf="form.get('price')?.errors && form.get('price')?.touched">
+                <label class="note">
+                    this field is required
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="txt_Company">Company</label>
+                <input type="text" class="form-control" id="txt_Company"  placeholder="Enter Company" formControlName="company">
+            </div>
+            <div *ngIf="form.get('company')?.errors && form.get('company')?.touched">
+                <label class="note">
+                    this field is required
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="file">File</label>
+                <input 
+                formControlName="file"
+                id="file" 
+                type="file" 
+                class="form-control"
+                (change)="onFileChange($event)">
+            <div *ngIf="form.get('file')?.touched && form.get('file')?.invalid" class="alert alert-danger">
+                <div *ngIf="form.get('file')?.errors?.required">
+                    <label class="note">
+                        this field is required
+                    </label>
+            </div>
+            </div>
+            </div>
+            <div class="form-group">
+                <img [src]="GetImage()" alt="default image" />
+            </div>
+           
+            <button type="submit" [disabled]="this.form.invalid" class="btn btn-outline-dark">Save</button>
+        </form>
+       
+    </div>
+    <div class="modal-footer">
+      <label class="note" *ngIf="resultProduct">
+       {{this.resultProduct.publicError}}
+      </label>
+    </div>
+  </ng-template>
+
+  
+  <pre>{{ closeResult }}</pre>
+  
